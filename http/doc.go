@@ -16,7 +16,7 @@
 // auth.AuthRequiredWithToken applies strict, case-sensitive Bearer authentication
 // to every request. Missing/malformed credentials return 400 and mismatches
 // return 403. Tokens are compared in constant time for equal-length values.
-// An empty configured secret denies all requests with 503 without invoking the
+// An empty configured secret denies all requests with 401 without invoking the
 // protected handler. Public endpoints such as /healthz are application routing
 // policy and must be served outside this middleware.
 //

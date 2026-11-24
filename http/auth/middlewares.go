@@ -17,12 +17,12 @@ const isExcludedKey contextKey = "isExcluded"
 
 // AuthRequiredWithToken requires an exact Bearer token on every request.
 // Missing or malformed credentials return 400; mismatched tokens return 403.
-// An empty requiredToken disables access: every request returns 503 without
+// An empty requiredToken disables access: every request returns 401 without
 // invoking next. Applications must route public endpoints outside this wrapper.
 func AuthRequiredWithToken(next http.Handler, requiredToken string) http.Handler {
 	if requiredToken == "" {
 		return http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-			http.Error(w, "bearer authentication is not configured", http.StatusServiceUnavailable)
+			http.Error(w, "bearer authentication is not configured", http.StatusUnauthorized)
 		})
 	}
 	fn := func(w http.ResponseWriter, r *http.Request) {
