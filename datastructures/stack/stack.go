@@ -29,6 +29,7 @@ func (s *Stack[T]) Push(item T) {
 }
 
 // Pop removes and returns the item from the top of the stack.
+// It releases the stack's reference to the removed item.
 // Returns the zero value of T and false if the stack is empty.
 func (s *Stack[T]) Pop() (T, bool) {
 	s.mu.Lock()
@@ -39,6 +40,7 @@ func (s *Stack[T]) Pop() (T, bool) {
 	}
 	idx := len(s.items) - 1
 	item := s.items[idx]
+	s.items[idx] = zero
 	s.items = s.items[:idx]
 	return item, true
 }
