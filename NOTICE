@@ -1,0 +1,7 @@
+reqfleet/lib
+Copyright reqfleet contributors
+
+This distribution contains source derived from reqfleet/shibuya,
+revision 2d85392ec589b150793fd51f82d3d66dc8c05317.
+The extracted source is licensed under the Apache License, Version 2.0.
+Modified extracted files are marked in their source headers.
